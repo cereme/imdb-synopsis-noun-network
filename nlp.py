@@ -26,3 +26,12 @@ def make_document(text):
     noun_tokens = cut_by_frequency(noun_tokens, 8)
     return ' '.join([elem[0] for elem in noun_tokens])
 
+
+targets = get_movie_targets()
+
+documents = [make_document(get_synopsis_from_imdb_id(id)) for id in targets]
+
+cv = CountVectorizer()
+tdm = cv.fit_transform(documents)
+print(tdm)
+print(cv.get_feature_names())
