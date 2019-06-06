@@ -17,7 +17,7 @@ def cut_by_frequency(tokens, criterion):
             result[token] += 1
         else:
             result[token] = 1
-    filtered_result = list(filter(lambda x: x[1] > 5, result.items()))
+    filtered_result = list(filter(lambda x: x[1] > criterion, result.items()))
     return sorted(filtered_result, key=lambda x: x[1],reverse=True)
 
 def make_document(text):
